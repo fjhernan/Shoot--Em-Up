@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Mm]emoryCaptures/
+Shoot 'Em Up/[Ll]ibrary/
+Shoot 'Em Up/[Tt]emp/
+Shoot 'Em Up/[Oo]bj/
+Shoot 'Em Up/[Bb]uild/
+Shoot 'Em Up/[Bb]uilds/
+Shoot 'Em Up/[Ll]ogs/
+Shoot 'Em Up/[Mm]emoryCaptures/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
