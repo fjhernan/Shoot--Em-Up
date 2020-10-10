@@ -20,4 +20,14 @@ public class Player : MonoBehaviour
 
       }*/
     }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        //GameObject particle = Instantiate(particleEffect, transform.position, Quaternion.identity);
+        //GameObject.Find("ScoreManager").GetComponent<ScoreManager>().Scored(1);
+        Debug.Log("Ouch!");
+        //Debug.Log("Destroyed enemy " + (index + 1));
+        //Destroy(particle, 2.0f);
+        //GameObject.Find("EnemyManager").GetComponent<EnemyManager>().removeEnemy((float)index);
+        Destroy(gameObject);
+    }
 }
