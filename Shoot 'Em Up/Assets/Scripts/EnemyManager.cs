@@ -14,7 +14,7 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnEnemies();
+        SpawnEnemies();
     }
 
     // Update is called once per frame
@@ -32,14 +32,14 @@ public class EnemyManager : MonoBehaviour
                 }
             }
             if (reverse == true){
-                borderHit();
+                BorderHit();
             }
             time = 0;
         }
 
         if(fireTime >= 3.0f){
             foreach(GameObject go in enemies){
-                if(go.GetComponent<Enemy>().getLast() == true){
+                if(go.GetComponent<Enemy>().GetLast() == true){
                     Vector3 temp = new Vector3(go.transform.position.x, go.transform.position.y - 1.0f, go.transform.position.z);
                     GameObject shot = Instantiate(bullet, temp, Quaternion.identity);
                     Destroy(shot, 2.0f);
@@ -51,7 +51,7 @@ public class EnemyManager : MonoBehaviour
         
     }
 
-    private void spawnEnemies()
+    private void SpawnEnemies()
     {
         int column = 7;
         float position = 0;
@@ -64,9 +64,9 @@ public class EnemyManager : MonoBehaviour
                 Spawn = GameObject.Instantiate(enemy, placement);
                 Spawn.transform.position = new Vector3(Spawn.transform.position.x - (j * 2.0f), Spawn.transform.position.y - (i * 2.0f),
                     Spawn.transform.position.z);
-                Spawn.GetComponent<Enemy>().setIndex(position);
+                Spawn.GetComponent<Enemy>().SetIndex(position);
                 if(position >= 7){
-                    Spawn.GetComponent<Enemy>().setLast(true);
+                    Spawn.GetComponent<Enemy>().SetLast(true);
                 }
                 enemies.Add(Spawn);
                 position++;
@@ -74,10 +74,10 @@ public class EnemyManager : MonoBehaviour
         }
     }
     
-    public void removeEnemy(float i){   
+    public void RemoveEnemy(float i){   
         int temp = 0;
         foreach(GameObject go in enemies){
-            if(go.GetComponent<Enemy>().getIndex() == i){
+            if(go.GetComponent<Enemy>().GetIndex() == i){
                 enemies.RemoveAt(temp);
                 break;
             }
@@ -92,7 +92,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void borderHit(){
+    public void BorderHit(){
         direction *= -1;
         foreach(GameObject go in enemies)
         {

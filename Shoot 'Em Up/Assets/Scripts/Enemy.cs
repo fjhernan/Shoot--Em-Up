@@ -16,23 +16,23 @@ public class Enemy : MonoBehaviour
         Debug.Log("Ouch!");
         Debug.Log("Destroyed enemy " + (index+1));
         Destroy(particle, 2.0f);
-        GameObject.Find("EnemyManager").GetComponent<EnemyManager>().removeEnemy((float) index);
+        GameObject.Find("EnemyManager").GetComponent<EnemyManager>().RemoveEnemy((float) index);
         Destroy(gameObject);
     }
-    public void setIndex(float r)
+    public void SetIndex(float r)
     {
         index = (int)r;
     }
-    public int getIndex(){
+    public int GetIndex(){
         int temp = index;
         return temp;
     }
     
-    public void setLast(bool value){
+    public void SetLast(bool value){
         last = value;
     }
 
-    public bool getLast(){
+    public bool GetLast(){
         bool temp = last;
         return temp;
     }
