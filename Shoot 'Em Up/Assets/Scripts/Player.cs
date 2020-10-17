@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         //Debug.Log("Player Destroyed");
         if(collision.gameObject.name == "EnemyBullet(Clone)")
             GameObject.Find("ScoreManager").GetComponent<ScoreManager>().OnDeath();
@@ -38,6 +39,8 @@ public class Player : MonoBehaviour
 =======
 =======
 >>>>>>> parent of 84018a8... Animations begin
+=======
+>>>>>>> parent of 84018a8... Animations begin
         //GameObject particle = Instantiate(particleEffect, transform.position, Quaternion.identity);
         //GameObject.Find("ScoreManager").GetComponent<ScoreManager>().Scored(1);
         Debug.Log("Ouch!");
@@ -46,6 +49,9 @@ public class Player : MonoBehaviour
         //GameObject.Find("EnemyManager").GetComponent<EnemyManager>().removeEnemy((float)index);
         Destroy(gameObject);
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 84018a8... Animations begin
+=======
 >>>>>>> parent of 84018a8... Animations begin
 =======
 >>>>>>> parent of 84018a8... Animations begin
