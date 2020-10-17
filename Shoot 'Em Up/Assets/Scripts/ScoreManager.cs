@@ -40,7 +40,7 @@ public class ScoreManager : MonoBehaviour
                 break;
         }
     }
-    public void OnDeath()
+    public void onDeath()
     {
         if (hiScore < score){
             hiScore = score;

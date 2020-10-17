@@ -23,7 +23,6 @@ public class InputManager : MonoBehaviour
         player.transform.Translate(move * amplify * Time.deltaTime, 0, 0);
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            player.GetComponent<Player>().Shoot();
             GameObject shot = Instantiate(bullet, shootingOffset.position, Quaternion.identity);
             Debug.Log("Bang!");
 

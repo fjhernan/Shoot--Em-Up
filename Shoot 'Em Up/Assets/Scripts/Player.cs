@@ -6,16 +6,24 @@ using UnityEditor.SceneManagement;
 public class Player : MonoBehaviour
 {
   public GameObject bullet;
-    private Animator animator;
 
   public Transform shottingOffset;
     // Update is called once per frame
     void Update()
     {
-        animator = GetComponent<Animator>();
+        /*
+      if (Input.GetKeyDown(KeyCode.Space))
+      {
+        GameObject shot = Instantiate(bullet, shottingOffset.position, Quaternion.identity);
+        Debug.Log("Bang!");
+
+        Destroy(shot, 3f);
+
+      }*/
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
+<<<<<<< HEAD
         //Debug.Log("Player Destroyed");
         if(collision.gameObject.name == "EnemyBullet(Clone)")
             GameObject.Find("ScoreManager").GetComponent<ScoreManager>().OnDeath();
@@ -26,5 +34,14 @@ public class Player : MonoBehaviour
     public void Shoot(){
         //Debug.Log("Shoot is called");
         animator.SetTrigger("Shoot");
+=======
+        //GameObject particle = Instantiate(particleEffect, transform.position, Quaternion.identity);
+        //GameObject.Find("ScoreManager").GetComponent<ScoreManager>().Scored(1);
+        Debug.Log("Ouch!");
+        //Debug.Log("Destroyed enemy " + (index + 1));
+        //Destroy(particle, 2.0f);
+        //GameObject.Find("EnemyManager").GetComponent<EnemyManager>().removeEnemy((float)index);
+        Destroy(gameObject);
+>>>>>>> parent of 84018a8... Animations begin
     }
 }

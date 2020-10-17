@@ -15,7 +15,7 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemies();
+        spawnEnemies();
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class EnemyManager : MonoBehaviour
                 }
             }
             if (reverse == true){
-                BorderHit();
+                borderHit();
             }
             time = 0;
         }
@@ -44,6 +44,7 @@ public class EnemyManager : MonoBehaviour
             Debug.Log(rand);
             int i = 0;
             foreach(GameObject go in enemies){
+<<<<<<< HEAD
                 if (rand == i) {
                     if (go.GetComponent<Enemy>().GetLast() == true) {
                         Vector3 temp = new Vector3(go.transform.position.x, go.transform.position.y - 1.0f, go.transform.position.z);
@@ -51,6 +52,13 @@ public class EnemyManager : MonoBehaviour
                         Destroy(shot, 2.0f);
                         break;
                     }
+=======
+                if(go.GetComponent<Enemy>().getLast() == true){
+                    Vector3 temp = new Vector3(go.transform.position.x, go.transform.position.y - 1.0f, go.transform.position.z);
+                    GameObject shot = Instantiate(bullet, temp, Quaternion.identity);
+                    Destroy(shot, 2.0f);
+                    break;
+>>>>>>> parent of 84018a8... Animations begin
                 }
                 i++;
             }
@@ -59,7 +67,7 @@ public class EnemyManager : MonoBehaviour
         
     }
 
-    private void SpawnEnemies()
+    private void spawnEnemies()
     {
         int column = 7;
         float position = 0;
@@ -74,12 +82,16 @@ public class EnemyManager : MonoBehaviour
                 Spawn = GameObject.Instantiate(enemy, placement);
                 Spawn.transform.position = new Vector3(Spawn.transform.position.x - (j * 2.0f), Spawn.transform.position.y - (i * 2.0f),
                     Spawn.transform.position.z);
+<<<<<<< HEAD
                 Spawn.transform.localScale = new Vector3(Spawn.transform.localScale.x * s,
                     Spawn.transform.localScale.y * s, Spawn.transform.localScale.z * s);
                 Spawn.GetComponent<Enemy>().SetEnemyType(type);
                 Spawn.GetComponent<Enemy>().SetIndex(position);
+=======
+                Spawn.GetComponent<Enemy>().setIndex(position);
+>>>>>>> parent of 84018a8... Animations begin
                 if(position >= 7){
-                    Spawn.GetComponent<Enemy>().SetLast(true);
+                    Spawn.GetComponent<Enemy>().setLast(true);
                 }
                 enemies.Add(Spawn);
                 position++;
@@ -93,7 +105,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
     
-    public void RemoveEnemy(float i){   
+    public void removeEnemy(float i){   
         int temp = 0;
         int locate = 0;
         
@@ -101,6 +113,7 @@ public class EnemyManager : MonoBehaviour
             locate = ((int) i) - 7;
 
         foreach(GameObject go in enemies){
+<<<<<<< HEAD
             if(temp == locate)
             {
                 //Debug.Log("This should be called once");
@@ -108,6 +121,9 @@ public class EnemyManager : MonoBehaviour
             }
 
             if(go.GetComponent<Enemy>().GetIndex() == i){
+=======
+            if(go.GetComponent<Enemy>().getIndex() == i){
+>>>>>>> parent of 84018a8... Animations begin
                 enemies.RemoveAt(temp);
                 break;
             }
@@ -125,7 +141,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void BorderHit(){
+    public void borderHit(){
         direction *= -1;
         foreach(GameObject go in enemies)
         {

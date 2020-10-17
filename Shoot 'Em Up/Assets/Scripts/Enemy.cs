@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+<<<<<<< HEAD
         Debug.Log(index);
         //GameObject particle = Instantiate(particleEffect, transform.position, Quaternion.identity);
         GameObject.Find("ScoreManager").GetComponent<ScoreManager>().Scored(type);
@@ -28,21 +29,30 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Death");
         //Destroy(gameObject);
         GetComponent<BoxCollider2D>().isTrigger = true;
+=======
+        GameObject particle = Instantiate(particleEffect, transform.position, Quaternion.identity);
+        GameObject.Find("ScoreManager").GetComponent<ScoreManager>().Scored(1);
+        Debug.Log("Ouch!");
+        Debug.Log("Destroyed enemy " + (index+1));
+        Destroy(particle, 2.0f);
+        GameObject.Find("EnemyManager").GetComponent<EnemyManager>().removeEnemy((float) index);
+        Destroy(gameObject);
+>>>>>>> parent of 84018a8... Animations begin
     }
-    public void SetIndex(float r)
+    public void setIndex(float r)
     {
         index = (int)r;
     }
-    public int GetIndex(){
+    public int getIndex(){
         int temp = index;
         return temp;
     }
     
-    public void SetLast(bool value){
+    public void setLast(bool value){
         last = value;
     }
 
-    public bool GetLast(){
+    public bool getLast(){
         bool temp = last;
         return temp;
     }

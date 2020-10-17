@@ -9,7 +9,7 @@ public class SceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnBarricade();
+        spawnBarricade();
     }
 
     // Update is called once per frame
@@ -18,7 +18,7 @@ public class SceneManager : MonoBehaviour
         
     }
 
-    private void SpawnBarricade() {
+    private void spawnBarricade() {
         GameObject Spawn = null; 
         Transform tempPlace = placement;
 
