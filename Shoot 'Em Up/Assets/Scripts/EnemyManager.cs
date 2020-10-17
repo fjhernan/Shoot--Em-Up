@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -22,6 +23,7 @@ public class EnemyManager : MonoBehaviour
     {
         time += Time.deltaTime;
         fireTime += Time.deltaTime;
+        
 
         if (time >= speed){
             foreach(GameObject go in enemies){
@@ -37,14 +39,20 @@ public class EnemyManager : MonoBehaviour
             time = 0;
         }
 
-        if(fireTime >= 3.0f){
+        if(fireTime >= 1.5f){
+            int rand = (int)Random.Range(0.0f, enemies.Count);
+            Debug.Log(rand);
+            int i = 0;
             foreach(GameObject go in enemies){
-                if(go.GetComponent<Enemy>().GetLast() == true){
-                    Vector3 temp = new Vector3(go.transform.position.x, go.transform.position.y - 1.0f, go.transform.position.z);
-                    GameObject shot = Instantiate(bullet, temp, Quaternion.identity);
-                    Destroy(shot, 2.0f);
-                    break;
+                if (rand == i) {
+                    if (go.GetComponent<Enemy>().GetLast() == true) {
+                        Vector3 temp = new Vector3(go.transform.position.x, go.transform.position.y - 1.0f, go.transform.position.z);
+                        GameObject shot = Instantiate(bullet, temp, Quaternion.identity);
+                        Destroy(shot, 2.0f);
+                        break;
+                    }
                 }
+                i++;
             }
             fireTime = 0;
         }
@@ -55,6 +63,8 @@ public class EnemyManager : MonoBehaviour
     {
         int column = 7;
         float position = 0;
+        float s = 1.00f;
+        int type = 0;
         Transform placement = enemyTransform;
         GameObject Spawn = null;
         for (float i = 0.0f; i < 2.0f; i++)
@@ -64,19 +74,39 @@ public class EnemyManager : MonoBehaviour
                 Spawn = GameObject.Instantiate(enemy, placement);
                 Spawn.transform.position = new Vector3(Spawn.transform.position.x - (j * 2.0f), Spawn.transform.position.y - (i * 2.0f),
                     Spawn.transform.position.z);
+                Spawn.transform.localScale = new Vector3(Spawn.transform.localScale.x * s,
+                    Spawn.transform.localScale.y * s, Spawn.transform.localScale.z * s);
+                Spawn.GetComponent<Enemy>().SetEnemyType(type);
                 Spawn.GetComponent<Enemy>().SetIndex(position);
                 if(position >= 7){
                     Spawn.GetComponent<Enemy>().SetLast(true);
                 }
                 enemies.Add(Spawn);
                 position++;
+                type++;
+                s -= 0.20f;
+                if(((int) position) % 4 == 0){
+                    s = 1.00f;
+                    type = 0;
+                }
             }
         }
     }
     
     public void RemoveEnemy(float i){   
         int temp = 0;
+        int locate = 0;
+        
+        if(i >= 7)
+            locate = ((int) i) - 7;
+
         foreach(GameObject go in enemies){
+            if(temp == locate)
+            {
+                //Debug.Log("This should be called once");
+                go.GetComponent<Enemy>().SetLast(true);
+            }
+
             if(go.GetComponent<Enemy>().GetIndex() == i){
                 enemies.RemoveAt(temp);
                 break;
@@ -89,6 +119,9 @@ public class EnemyManager : MonoBehaviour
         }
         else if(enemies.Count == 1){
             speed /= 4.0f;
+        }
+        if(enemies.Count == 0){
+            EditorSceneManager.LoadScene(2);
         }
     }
 

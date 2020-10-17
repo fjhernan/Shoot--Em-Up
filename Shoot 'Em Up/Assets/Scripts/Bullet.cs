@@ -15,11 +15,7 @@ public class Bullet : MonoBehaviour
       Fire();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(gameObject);
-    }
-    
+    // Update is called once per frame
     private void Fire()
     {
       myRigidbody2D.velocity = Vector2.up * speed; 

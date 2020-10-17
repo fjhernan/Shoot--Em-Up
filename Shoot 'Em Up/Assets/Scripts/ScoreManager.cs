@@ -24,17 +24,17 @@ public class ScoreManager : MonoBehaviour
     {
         switch (value)
         {
-            case 1:
+            case 0:
                 score += 10;
                 break;
-            case 2:
+            case 1:
                 score += 20;
                 break;
-            case 3:
+            case 2:
                 score += 30;
                 break;
-            case 4:
-                score += 100;
+            case 3:
+                score += 40;
                 break;
             default:
                 break;
