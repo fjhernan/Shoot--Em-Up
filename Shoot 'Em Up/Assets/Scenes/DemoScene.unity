@@ -342,6 +342,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4447747329123161577, guid: 46f7c04cfd4b73e49a865596061b9ab8, type: 3}
   m_PrefabInstance: {fileID: 5093394722281305421}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+>>>>>>> parent of 84018a8... Animations begin
+=======
 >>>>>>> parent of 84018a8... Animations begin
 --- !u!1 &470988815
 GameObject:
@@ -796,7 +799,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 0
+=======
+      value: -251.49353
+>>>>>>> parent of 84018a8... Animations begin
 =======
       value: -251.49353
 >>>>>>> parent of 84018a8... Animations begin
@@ -805,7 +812,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: -3.04
+=======
+      value: -211.18
+>>>>>>> parent of 84018a8... Animations begin
 =======
       value: -211.18
 >>>>>>> parent of 84018a8... Animations begin
@@ -895,6 +906,7 @@ PrefabInstance:
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 6604860522166403265, guid: c3b77266ea0668e4289e92aa866a25ed,
         type: 3}
       propertyPath: m_LocalRotation.y
@@ -940,6 +952,8 @@ PrefabInstance:
     - {fileID: 3390145920611986610, guid: c3b77266ea0668e4289e92aa866a25ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c3b77266ea0668e4289e92aa866a25ed, type: 3}
 =======
+=======
+>>>>>>> parent of 84018a8... Animations begin
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46f7c04cfd4b73e49a865596061b9ab8, type: 3}
 >>>>>>> parent of 84018a8... Animations begin

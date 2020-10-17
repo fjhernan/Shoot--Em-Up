@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         //Debug.Log("Player Destroyed");
         if(collision.gameObject.name == "EnemyBullet(Clone)")
             GameObject.Find("ScoreManager").GetComponent<ScoreManager>().OnDeath();
@@ -35,6 +36,8 @@ public class Player : MonoBehaviour
         //Debug.Log("Shoot is called");
         animator.SetTrigger("Shoot");
 =======
+=======
+>>>>>>> parent of 84018a8... Animations begin
         //GameObject particle = Instantiate(particleEffect, transform.position, Quaternion.identity);
         //GameObject.Find("ScoreManager").GetComponent<ScoreManager>().Scored(1);
         Debug.Log("Ouch!");
@@ -42,6 +45,9 @@ public class Player : MonoBehaviour
         //Destroy(particle, 2.0f);
         //GameObject.Find("EnemyManager").GetComponent<EnemyManager>().removeEnemy((float)index);
         Destroy(gameObject);
+<<<<<<< HEAD
+>>>>>>> parent of 84018a8... Animations begin
+=======
 >>>>>>> parent of 84018a8... Animations begin
     }
 }

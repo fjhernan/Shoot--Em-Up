@@ -45,6 +45,7 @@ public class EnemyManager : MonoBehaviour
             int i = 0;
             foreach(GameObject go in enemies){
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if (rand == i) {
                     if (go.GetComponent<Enemy>().GetLast() == true) {
                         Vector3 temp = new Vector3(go.transform.position.x, go.transform.position.y - 1.0f, go.transform.position.z);
@@ -53,6 +54,8 @@ public class EnemyManager : MonoBehaviour
                         break;
                     }
 =======
+=======
+>>>>>>> parent of 84018a8... Animations begin
                 if(go.GetComponent<Enemy>().getLast() == true){
                     Vector3 temp = new Vector3(go.transform.position.x, go.transform.position.y - 1.0f, go.transform.position.z);
                     GameObject shot = Instantiate(bullet, temp, Quaternion.identity);
@@ -83,10 +86,14 @@ public class EnemyManager : MonoBehaviour
                 Spawn.transform.position = new Vector3(Spawn.transform.position.x - (j * 2.0f), Spawn.transform.position.y - (i * 2.0f),
                     Spawn.transform.position.z);
 <<<<<<< HEAD
+<<<<<<< HEAD
                 Spawn.transform.localScale = new Vector3(Spawn.transform.localScale.x * s,
                     Spawn.transform.localScale.y * s, Spawn.transform.localScale.z * s);
                 Spawn.GetComponent<Enemy>().SetEnemyType(type);
                 Spawn.GetComponent<Enemy>().SetIndex(position);
+=======
+                Spawn.GetComponent<Enemy>().setIndex(position);
+>>>>>>> parent of 84018a8... Animations begin
 =======
                 Spawn.GetComponent<Enemy>().setIndex(position);
 >>>>>>> parent of 84018a8... Animations begin
@@ -114,6 +121,7 @@ public class EnemyManager : MonoBehaviour
 
         foreach(GameObject go in enemies){
 <<<<<<< HEAD
+<<<<<<< HEAD
             if(temp == locate)
             {
                 //Debug.Log("This should be called once");
@@ -121,6 +129,9 @@ public class EnemyManager : MonoBehaviour
             }
 
             if(go.GetComponent<Enemy>().GetIndex() == i){
+=======
+            if(go.GetComponent<Enemy>().getIndex() == i){
+>>>>>>> parent of 84018a8... Animations begin
 =======
             if(go.GetComponent<Enemy>().getIndex() == i){
 >>>>>>> parent of 84018a8... Animations begin
