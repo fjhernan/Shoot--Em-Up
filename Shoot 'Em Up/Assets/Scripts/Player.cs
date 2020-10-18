@@ -5,55 +5,47 @@ using UnityEditor.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-  public GameObject bullet;
-
-  public Transform shottingOffset;
+    public GameObject bullet;
+    public Animator animator;
+    public Transform shottingOffset;
+    private AudioSource a;
+    public AudioClip ac, ac2;
     // Update is called once per frame
+
+    private void Start()
+    {
+        a = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+    }
     void Update()
     {
-        /*
-      if (Input.GetKeyDown(KeyCode.Space))
-      {
-        GameObject shot = Instantiate(bullet, shottingOffset.position, Quaternion.identity);
-        Debug.Log("Bang!");
-
-        Destroy(shot, 3f);
-
-      }*/
+        
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         //Debug.Log("Player Destroyed");
-        if(collision.gameObject.name == "EnemyBullet(Clone)")
+        if (collision.gameObject.name == "EnemyBullet(Clone)")
+        {
+            a.PlayOneShot(ac2);
+            animator.SetTrigger("Death");
             GameObject.Find("ScoreManager").GetComponent<ScoreManager>().OnDeath();
-    
+            StartCoroutine(CountDown());
+        }
+            
+
+        
+    }
+
+    IEnumerator CountDown(){
+        yield return new WaitForSeconds(1.0f);
         EditorSceneManager.LoadScene(2);
     }
 
-    public void Shoot(){
-        //Debug.Log("Shoot is called");
+    public void Shoot()
+    {
+        Debug.Log("Is this being called?");
+        a.PlayOneShot(ac);
         animator.SetTrigger("Shoot");
-=======
-=======
->>>>>>> parent of 84018a8... Animations begin
-=======
->>>>>>> parent of 84018a8... Animations begin
-        //GameObject particle = Instantiate(particleEffect, transform.position, Quaternion.identity);
-        //GameObject.Find("ScoreManager").GetComponent<ScoreManager>().Scored(1);
         Debug.Log("Ouch!");
-        //Debug.Log("Destroyed enemy " + (index + 1));
-        //Destroy(particle, 2.0f);
-        //GameObject.Find("EnemyManager").GetComponent<EnemyManager>().removeEnemy((float)index);
-        Destroy(gameObject);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 84018a8... Animations begin
-=======
->>>>>>> parent of 84018a8... Animations begin
-=======
->>>>>>> parent of 84018a8... Animations begin
     }
 }

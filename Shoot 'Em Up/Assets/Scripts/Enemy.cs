@@ -10,49 +10,48 @@ public class Enemy : MonoBehaviour
     private int index = 0;
     private bool last = false;
     private int type;
+    private AudioSource a;
+    public AudioClip ac, ac2;
     // Start is called before the first frame update
     void Start()
     {
+        a = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();    
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-<<<<<<< HEAD
         Debug.Log(index);
         //GameObject particle = Instantiate(particleEffect, transform.position, Quaternion.identity);
         GameObject.Find("ScoreManager").GetComponent<ScoreManager>().Scored(type);
         //Debug.Log("Ouch!");
         //Debug.Log("Destroyed enemy " + (index+1));
         //Destroy(particle, 2.0f);
-        GameObject.Find("EnemyManager").GetComponent<EnemyManager>().RemoveEnemy((float) index);
+        GameObject.Find("EnemyManager").GetComponent<EnemyManager>().RemoveEnemy((float)index);
         animator.SetTrigger("Death");
         //Destroy(gameObject);
+        a.PlayOneShot(ac2);
         GetComponent<BoxCollider2D>().isTrigger = true;
-=======
-        GameObject particle = Instantiate(particleEffect, transform.position, Quaternion.identity);
-        GameObject.Find("ScoreManager").GetComponent<ScoreManager>().Scored(1);
-        Debug.Log("Ouch!");
-        Debug.Log("Destroyed enemy " + (index+1));
-        Destroy(particle, 2.0f);
-        GameObject.Find("EnemyManager").GetComponent<EnemyManager>().removeEnemy((float) index);
-        Destroy(gameObject);
->>>>>>> parent of 84018a8... Animations begin
     }
-    public void setIndex(float r)
+    public void Shoot(){
+        animator.SetTrigger("Shoot");
+        a.PlayOneShot(ac);
+    }
+
+    public void SetIndex(float r)
     {
         index = (int)r;
     }
-    public int getIndex(){
+    public int GetIndex(){
         int temp = index;
         return temp;
     }
     
-    public void setLast(bool value){
+    public void SetLast(bool value){
         last = value;
     }
 
-    public bool getLast(){
+    public bool GetLast(){
         bool temp = last;
         return temp;
     }

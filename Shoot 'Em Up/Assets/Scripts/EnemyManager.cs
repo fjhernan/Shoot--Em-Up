@@ -15,7 +15,7 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnEnemies();
+        SpawnEnemies();
     }
 
     // Update is called once per frame
@@ -23,57 +23,52 @@ public class EnemyManager : MonoBehaviour
     {
         time += Time.deltaTime;
         fireTime += Time.deltaTime;
-        
 
-        if (time >= speed){
-            foreach(GameObject go in enemies){
-                go.transform.position = new Vector3(go.transform.position.x - direction , go.transform.position.y, go.transform.position.z);
-                if(go.transform.position.x <= -7.0f || go.transform.position.x >= 7.0f){
+
+        if (time >= speed)
+        {
+            foreach (GameObject go in enemies)
+            {
+                go.transform.position = new Vector3(go.transform.position.x - direction, go.transform.position.y, go.transform.position.z);
+                if (go.transform.position.x <= -7.0f || go.transform.position.x >= 7.0f)
+                {
                     reverse = true;
                     Debug.Log(go.transform.position.x);
                 }
             }
-            if (reverse == true){
-                borderHit();
+            if (reverse == true)
+            {
+                BorderHit();
             }
             time = 0;
         }
 
-        if(fireTime >= 1.5f){
+        if (fireTime >= 1.5f)
+        {
             int rand = (int)Random.Range(0.0f, enemies.Count);
             Debug.Log(rand);
             int i = 0;
-            foreach(GameObject go in enemies){
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                if (rand == i) {
-                    if (go.GetComponent<Enemy>().GetLast() == true) {
+            foreach (GameObject go in enemies)
+            {
+                if (rand == i)
+                {
+                    if (go.GetComponent<Enemy>().GetLast() == true)
+                    {
+                        go.GetComponent<Enemy>().Shoot();
                         Vector3 temp = new Vector3(go.transform.position.x, go.transform.position.y - 1.0f, go.transform.position.z);
                         GameObject shot = Instantiate(bullet, temp, Quaternion.identity);
                         Destroy(shot, 2.0f);
                         break;
                     }
-=======
-=======
->>>>>>> parent of 84018a8... Animations begin
-=======
->>>>>>> parent of 84018a8... Animations begin
-                if(go.GetComponent<Enemy>().getLast() == true){
-                    Vector3 temp = new Vector3(go.transform.position.x, go.transform.position.y - 1.0f, go.transform.position.z);
-                    GameObject shot = Instantiate(bullet, temp, Quaternion.identity);
-                    Destroy(shot, 2.0f);
-                    break;
->>>>>>> parent of 84018a8... Animations begin
                 }
                 i++;
             }
             fireTime = 0;
         }
-        
+
     }
 
-    private void spawnEnemies()
+    private void SpawnEnemies()
     {
         int column = 7;
         float position = 0;
@@ -88,84 +83,69 @@ public class EnemyManager : MonoBehaviour
                 Spawn = GameObject.Instantiate(enemy, placement);
                 Spawn.transform.position = new Vector3(Spawn.transform.position.x - (j * 2.0f), Spawn.transform.position.y - (i * 2.0f),
                     Spawn.transform.position.z);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 Spawn.transform.localScale = new Vector3(Spawn.transform.localScale.x * s,
                     Spawn.transform.localScale.y * s, Spawn.transform.localScale.z * s);
                 Spawn.GetComponent<Enemy>().SetEnemyType(type);
                 Spawn.GetComponent<Enemy>().SetIndex(position);
-=======
-                Spawn.GetComponent<Enemy>().setIndex(position);
->>>>>>> parent of 84018a8... Animations begin
-=======
-                Spawn.GetComponent<Enemy>().setIndex(position);
->>>>>>> parent of 84018a8... Animations begin
-=======
-                Spawn.GetComponent<Enemy>().setIndex(position);
->>>>>>> parent of 84018a8... Animations begin
-                if(position >= 7){
-                    Spawn.GetComponent<Enemy>().setLast(true);
+                if (position >= 7)
+                {
+                    Spawn.GetComponent<Enemy>().SetLast(true);
                 }
                 enemies.Add(Spawn);
                 position++;
                 type++;
                 s -= 0.20f;
-                if(((int) position) % 4 == 0){
+                if (((int)position) % 4 == 0)
+                {
                     s = 1.00f;
                     type = 0;
                 }
             }
         }
     }
-    
-    public void removeEnemy(float i){   
+
+    public void RemoveEnemy(float i)
+    {
         int temp = 0;
         int locate = 0;
-        
-        if(i >= 7)
-            locate = ((int) i) - 7;
 
-        foreach(GameObject go in enemies){
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            if(temp == locate)
+        if (i >= 7)
+            locate = ((int)i) - 7;
+
+        foreach (GameObject go in enemies)
+        {
+            if (temp == locate)
             {
                 //Debug.Log("This should be called once");
                 go.GetComponent<Enemy>().SetLast(true);
             }
 
-            if(go.GetComponent<Enemy>().GetIndex() == i){
-=======
-            if(go.GetComponent<Enemy>().getIndex() == i){
->>>>>>> parent of 84018a8... Animations begin
-=======
-            if(go.GetComponent<Enemy>().getIndex() == i){
->>>>>>> parent of 84018a8... Animations begin
-=======
-            if(go.GetComponent<Enemy>().getIndex() == i){
->>>>>>> parent of 84018a8... Animations begin
+            if (go.GetComponent<Enemy>().GetIndex() == i)
+            {
                 enemies.RemoveAt(temp);
                 break;
             }
             temp++;
         }
-        if(enemies.Count  % 4 == 0) {
+        if (enemies.Count % 4 == 0)
+        {
             speed /= 2.0f;
             Debug.Log("Speeding Up");
         }
-        else if(enemies.Count == 1){
+        else if (enemies.Count == 1)
+        {
             speed /= 4.0f;
         }
-        if(enemies.Count == 0){
+        if (enemies.Count == 0)
+        {
             EditorSceneManager.LoadScene(2);
         }
     }
 
-    public void borderHit(){
+    public void BorderHit()
+    {
         direction *= -1;
-        foreach(GameObject go in enemies)
+        foreach (GameObject go in enemies)
         {
             go.transform.position = new Vector3(go.transform.position.x, go.transform.position.y - 0.5f, go.transform.position.z);
         }
